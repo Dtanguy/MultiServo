@@ -1,10 +1,10 @@
 # MultiServo
 
-An arduino librarie for pilot group of servomotor synchronously
+An arduino library for pilot group of servomotor synchronously
 
 Still WIP /!\
 
-The goal of this librarie is to fix the latence between two servo.write(angle) commande.
+The goal of this library is to fix the latence between two servo.write(angle) commande.
 
 In fact when you do this :
 
