@@ -3,11 +3,12 @@
     
 #include <Arduino.h>
 #include <Servo.h>
-	
+
 #define minS 500
 #define maxS 2500
   
 class UpgradeServo {
+	
 	public :	
 	UpgradeServo();
 	UpgradeServo(int pin);
@@ -20,7 +21,7 @@ class UpgradeServo {
 	void detach();	
 	void setPos(double a);
 	double getPos();
-	void addToPos(double a);
+	void setPosAdd(double a);
 	bool aprochToPos(double a, double pas);
 	
 	private :
@@ -37,22 +38,29 @@ class MultiServo {
 	
 	public:
 	MultiServo(int nbServo);
-	MultiServo(int nbServo, int* pins);
-	int getNbServo();
-	void init(int pins[]);
-	void setInstantPos(double* pos);
-	void setPos(double* pos);
+	void init(int pins[]);	
+	
+	void setBrutPos(double pos[]);
+	void setBrutPosAll(double pos);
+	
+	void setPos(double pos[]);
+	void setPos(int id, double pos);
+	void setPosAdd(int id, double pos);
+	void getPos(double pos[]);	
+	char* getPosChar();
+	
 	void update(int d, double pas);
-	void getPos(double* pos);
+	void updateOnce(double pas);
+	
+	int size();
 	UpgradeServo getServo(int id);
 	
 	private:
-	int _nbServo;
-	UpgradeServo* _s;
-	double* _tarjetPos;
+	int _nbServo = 0;
+	UpgradeServo _s[50];
+	double _tarjetPos[50];
 	
 };
-
 
     
 #endif
